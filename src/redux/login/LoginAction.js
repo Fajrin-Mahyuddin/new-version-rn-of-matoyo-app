@@ -1,20 +1,7 @@
 import {SET_TOKEN, SET_PROFILE, LOGOUT} from '../TypeActions';
-import {
-  getRequest,
-  postRequest,
-  setTokenToAxios,
-} from '../../config/AxiosMethod';
-import {
-  setLoading,
-  set_error,
-  setErrorRequest,
-  getReset,
-} from '../general/GeneralAction';
+import {getRequest, postRequest} from '../../config/AxiosMethod';
+import {setLoading, set_error, setErrorRequest} from '../general/GeneralAction';
 
-// export const login = (payload) => ({
-//   type: LOGIN_POST,
-//   payload,
-// });
 export const logout = () => ({
   type: LOGOUT,
 });
@@ -32,7 +19,6 @@ export const setToken = (payload) => ({
 export const login_post = (data) => {
   return (dispatch) => {
     dispatch(setLoading(true));
-    console.log('data login', data);
     postRequest(`post`, data)
       .then((res) => {
         if (res.data.level !== 'kasir') {
@@ -47,7 +33,6 @@ export const login_post = (data) => {
         } else {
           dispatch(setToken({token: res.data.token, isLogin: true}));
           dispatch(get_profile());
-          console.log('Respon login', res);
         }
       })
       .catch((err) => {
@@ -71,14 +56,6 @@ export const get_profile = () => {
   return (dispatch) => {
     getRequest('user')
       .then((res) => {
-        console.log('get profile', res.data);
-        // const data = {
-        //   id: res.data.id,
-        //   name: res.data.name,
-        //   username: res.data.username,
-        //   level: res.data.level,
-        //   data,
-        // };
         dispatch(setProfile(res.data));
         dispatch(setLoading(false));
       })
@@ -96,7 +73,6 @@ export const get_logout = () => {
       .then((res) => {
         dispatch(logout());
         dispatch(setToken({token: null, isLogin: false}));
-        console.log('res logout', res);
       })
       .catch((err) => {
         console.log('ERROR LOGOUT', err);

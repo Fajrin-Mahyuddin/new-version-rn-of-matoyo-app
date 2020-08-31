@@ -57,11 +57,9 @@ const ViewBasket = (props) => {
         setDataOrder(res.data);
         countTotal(res.data.menu);
         dispatch(setLoading(false));
-        console.log('respon get detail pesanan');
       })
       .catch((err) => {
         dispatch(setLoading(false));
-        console.log('error get detail pesanan', err.request);
       });
   };
 
@@ -87,8 +85,6 @@ const ViewBasket = (props) => {
           getDetailOrder();
         })
         .catch((err) => {
-          console.log('error------', err.request);
-          console.log('error------', err.response);
           dispatch(
             set_error({error: true, msg: `${err.response.data.status}`}),
           );
@@ -116,12 +112,10 @@ const ViewBasket = (props) => {
     );
     update
       .then((res) => {
-        console.log('---------', res);
         props.navigation.navigate('createOrderPage');
       })
       .catch((err) => {
         console.log('ERROR');
-        console.log('ERROR REQUEST', err.request);
       });
   };
 
@@ -137,10 +131,6 @@ const ViewBasket = (props) => {
         console.log('error pay order', err.request);
         dispatch(setLoading(false));
       });
-  };
-
-  const postItemProcess = () => {
-    postRequest(``);
   };
 
   // Kosong kan keranjang di redux
@@ -159,28 +149,8 @@ const ViewBasket = (props) => {
     }
   };
 
-  // const handleDeleteItemProses = () => {
-
-  //     const newMenu = dataOrder.menu.filter((data) => {
-  //       return dataEdit.id_daftar_menu !== data.id_daftar_menu;
-  //     });
-  //     const total_bayar = newMenu.reduce((total, item) => {
-  //       return item.harga_total + total;
-  //     }, 0);
-  //     const update = dispatch(
-  //       updateMenu({...dataOrder, menu: newMenu, total_bayar}),
-  //     );
-  //     update
-  //       .then((res) => {
-  //         getDetailOrder();
-  //       })
-  //       .catch((err) => console.log('error'));
-
-  // };
-
   // batalkan pesanan yang telah di proses
   const handleCancelOrder = () => {
-    console.log('cancelsssssssssssss', {...cancelMenu, ...dataOrder});
     postRequest(`daftar-pesanan/cancel-order`, {...cancelMenu, ...dataOrder})
       .then((res) => {
         console.log('cancel order', res);
@@ -188,8 +158,6 @@ const ViewBasket = (props) => {
         props.navigation.goBack();
       })
       .catch((err) => {
-        console.log(err);
-        console.log(err.request);
         dispatch(set_error({error: true, msg: 'Gagal !'}));
       });
   };
@@ -214,10 +182,6 @@ const ViewBasket = (props) => {
   useEffect(() => {
     getDataAfterUseEffect();
   }, [isFocus]);
-
-  console.log('view bakset', props);
-  console.log('Cancel Menu', cancelMenu);
-  console.log('dataEdit ', dataEdit);
 
   return (
     <MainBackground source={second_bg}>

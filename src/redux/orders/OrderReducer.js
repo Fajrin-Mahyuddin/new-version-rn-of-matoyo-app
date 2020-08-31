@@ -1,8 +1,5 @@
-import store from '../store';
-
 const {
   CREATE_ORDER,
-  PUT_ORDER,
   DEL_MENU_ORDER,
   UPDATE_ORDER,
   PROCESS_ORDER,
@@ -17,16 +14,6 @@ const globalOrder = {
   menu: [],
   total_bayar: 0,
 };
-// const cek = (data) => {
-//   const index = globalOrder.menu.findIndex((e) => e.id === data.id);
-//   if (index) {
-//     return (globalOrder.menu[index] = {
-//       ...globalOrder.menu[index],
-//       jumlah: data.jumlah,
-//       harga_total: data.harga_total,
-//     });
-//   }
-// };
 
 const OrderReducer = (state = globalOrder, action) => {
   switch (action.type) {

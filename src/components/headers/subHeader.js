@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Message from '../../images/icon/message.svg';
 import User from '../../images/icon/user.svg';

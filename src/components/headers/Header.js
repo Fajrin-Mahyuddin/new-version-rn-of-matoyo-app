@@ -1,5 +1,5 @@
-import React, {Component, Fragment, useState, useEffect} from 'react';
-import {Text, View, StyleSheet, Image} from 'react-native';
+import React, {Fragment, useState, useEffect} from 'react';
+import {Text, View, StyleSheet} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import Logo from '../../images/default.png';

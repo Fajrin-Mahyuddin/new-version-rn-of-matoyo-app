@@ -72,7 +72,6 @@ const ListOrderPage = (props) => {
   useEffect(() => {
     isFocus && getDataOrder();
   }, [isFocus]);
-  console.log("dataOrder''''''''''''''", dataOrder);
   return (
     <MainBackground source={second_bg} navigation={navigation}>
       <Header

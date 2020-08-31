@@ -6,11 +6,11 @@ const {default: Axios} = require('axios');
 // export const MainUrl = 'http://192.168.43.124/pabalu_api/public/api/';
 // export const FileUrl = 'http://192.168.43.124/pabalu_api/public/';
 
-// export const MainUrl = 'http://matoyo.elektro-untad.com/public/api/';
-// export const FileUrl = 'http://matoyo.elektro-untad.com/public/';
+export const MainUrl = 'http://matoyo.elektro-untad.com/public/api/';
+export const FileUrl = 'http://matoyo.elektro-untad.com/public/';
 
-export const MainUrl = 'http://192.168.43.156/pabalu_api/public/api/';
-export const FileUrl = 'http://192.168.43.156/pabalu_api/public/';
+// export const MainUrl = 'http://192.168.43.156/pabalu_api/public/api/';
+// export const FileUrl = 'http://192.168.43.156/pabalu_api/public/';
 const instance = Axios.create({
   baseURL: MainUrl,
   timeout: 9000,

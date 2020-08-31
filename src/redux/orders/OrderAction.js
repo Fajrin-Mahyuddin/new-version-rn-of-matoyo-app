@@ -4,19 +4,8 @@ import {
   UPDATE_ORDER,
   EMPTY_ORDER,
 } from '../TypeActions';
-import {
-  getRequest,
-  postRequest,
-  setTokenToAxios,
-} from '../../config/AxiosMethod';
-import {
-  setLoading,
-  set_error,
-  setErrorRequest,
-  getReset,
-  setError,
-  set_success,
-} from '../general/GeneralAction';
+import {postRequest} from '../../config/AxiosMethod';
+import {setLoading, set_error, set_success} from '../general/GeneralAction';
 
 export const createOrder = (payload) => ({
   type: CREATE_ORDER,

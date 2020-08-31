@@ -25,16 +25,11 @@ import LoadingAnimation from './src/components/body/LoadingAnimation';
 import {PersistGate} from 'redux-persist/integration/react';
 import persistStore from 'redux-persist/es/persistStore';
 
-// import 'react-native-gesture-handler';
-
 enableScreens();
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 const HomeStack = createStackNavigator();
 const AuthStack = createStackNavigator();
-// const MenuStack = createStackNavigator();
 const MainDrawer = createDrawerNavigator();
-// const ProfileDrawer = createDrawerNavigator();
-// const DetailDrawer = createDrawerNavigator();
 
 const MainDrawerScreen = () => {
   return (
@@ -45,7 +40,6 @@ const MainDrawerScreen = () => {
         activeTintColor: '#2D4B94',
         inactiveTintColor: '#2D4B94',
         labelStyle: {
-          // fontWeight: '600',
           left: 0,
           fontSize: 14,
           marginLeft: -10,
@@ -145,9 +139,7 @@ const HomeNavigation = () => {
       <HomeStack.Screen name="qrgenerate" component={QrGenerated} />
       <HomeStack.Screen name="absen" component={AbsensiPage} />
       <HomeStack.Screen name="reportPage" component={MainDrawerScreen} />
-      {/* <HomeStack.Screen name="historyPage" component={MainDrawerScreen} /> */}
       <HomeStack.Screen name="createReportPage" component={CreateReportPage} />
-      {/* <HomeStack.Screen name="login" component={AuthNavigation} /> */}
     </HomeStack.Navigator>
   );
 };
@@ -160,7 +152,6 @@ const AuthNavigation = () => {
         headerShown: false,
       }}>
       <AuthStack.Screen name="login" component={LoginPage} />
-      {/* <AuthStack.Screen name="Dashboard" component={HomeNavigation} /> */}
     </AuthStack.Navigator>
   );
 };
@@ -179,13 +170,13 @@ const persisStore = persistStore(store);
 const App = () => {
   return (
     <Provider store={store}>
-      {/* <PersistGate persistor={persisStore} loading={null}> */}
-      <StatusBar hidden={true} />
-      <LoadingAnimation />
-      <NavigationContainer>
-        <MainNavigation />
-      </NavigationContainer>
-      {/* </PersistGate> */}
+      <PersistGate persistor={persisStore} loading={null}>
+        <StatusBar hidden={true} />
+        <LoadingAnimation />
+        <NavigationContainer>
+          <MainNavigation />
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };

@@ -21,8 +21,6 @@ const MainBackground = (props) => {
           />
         )
       )}
-
-      {/* <ErrorRequest /> */}
       {props.children}
     </ImageBackground>
   );

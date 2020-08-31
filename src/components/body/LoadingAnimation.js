@@ -2,26 +2,16 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {getReset} from '../../redux/general/GeneralAction';
-import {useDispatch} from 'react-redux';
 
 const LoadingAnimation = () => {
-  const dispatch = useDispatch();
   return (
     <View style={styles.loadingStyle}>
       <Animatable.Text
-        // style={{color: '#fff'}}
         animation={rotateAnimation}
         easing="linear"
         iterationCount="infinite">
         <MaterialCommunityIcons name="loading" color="#fff" size={60} />
       </Animatable.Text>
-      {/* <MaterialCommunityIcons
-        name="reload"
-        onPress={() => dispatch(getReset())}
-        color="#fff"
-        size={100}
-      /> */}
     </View>
   );
 };

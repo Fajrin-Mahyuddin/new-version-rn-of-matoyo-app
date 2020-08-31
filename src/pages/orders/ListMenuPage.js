@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Text,
@@ -17,10 +17,9 @@ import second_bg from '../../images/second_bg.png';
 import defaultImg from '../../images/default-menu.jpg';
 import Header from '../../components/headers/Header';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Footer from '../../components/footers/Footer';
 import Content from '../../components/body/Content';
 import {screenWidth} from '../../config/sizeConfig';
-import {getRequest, postRequest, FileUrl} from '../../config/AxiosMethod';
+import {getRequest, FileUrl} from '../../config/AxiosMethod';
 import {connect} from 'react-redux';
 import {
   setErrorRequest,
@@ -28,17 +27,9 @@ import {
   getReset,
   set_error,
 } from '../../redux/general/GeneralAction';
-import {
-  createOrder,
-  prosesOrder,
-  updateMenu,
-} from '../../redux/orders/OrderAction';
+import {createOrder, updateMenu} from '../../redux/orders/OrderAction';
 import {setToken} from '../../redux/login/LoginAction';
-// import OrderReducer from '../../redux/orders/OrderReducer';
-// import GeneralReducer from '../../redux/general/GeneralReducer';
 import CurrencyFormat from 'react-currency-format';
-
-// import Auth from '../../config/Auth';
 
 class ListMenuPage extends Component {
   constructor() {
@@ -48,7 +39,6 @@ class ListMenuPage extends Component {
       jumlah: 1,
       idDaftarMenu: 0,
       dataMenu: [],
-      keranjang: [], //ngk dipake
       dataModal: {},
       filterDataMenu: [],
       refresh: false,
@@ -96,7 +86,6 @@ class ListMenuPage extends Component {
   };
 
   Increase = () => {
-    // let num = this.state.jumlah
     this.setState({jumlah: this.state.jumlah + 1});
   };
   Decrease = () => {
@@ -104,29 +93,7 @@ class ListMenuPage extends Component {
   };
 
   handleAddModal = (list) => {
-    // const {OrderReducer} = this.props;
-    // const {params} = this.props.route;
-    this.setState({modal: true, dataModal: list}, () => {});
-  };
-
-  handleUpdateOrderInDatabase = () => {
-    // const {jumlah, dataModal} = this.state;
-    // const {params} = this.props.route;
-    // const harga_total = jumlah * (dataModal.harga - dataModal.diskon / 100);
-    // const menuOrder = {
-    //   id_daftar_menu: dataModal.id_daftar_menu,
-    //   nama_menu: dataModal.get_menu.nama,
-    //   jumlah,
-    //   harga_total,
-    //   harga_satuan: dataModal.harga,
-    //   diskon_menu: dataModal.diskon,
-    // };
-    // const menuUpdate = params.dataOrder.menu.filter(
-    //   (data) => dataModal.id_daftar_menu !== data.id_daftar_menu,
-    // );
-    // const newMenuUpdate = [...menuUpdate, menuOrder];
-    // console.log('params', params);
-    // console.log('newMenuUpdate', newMenuUpdate);
+    this.setState({modal: true, dataModal: list});
   };
 
   findIndexOfmenu = (arr, compare, equal = true) => {
@@ -167,25 +134,11 @@ class ListMenuPage extends Component {
           harga_total,
         };
       }
-      // // buat menu update
-      // let menus = this.findIndexOfmenu(params.menu, dataModal, false);
-      // // gabungkan menu lama dengan menu yang dipilih kedalam bentuk array
-      // const newMenuUpdate = [...menus, {...menuUpdate}];
-
-      // // hitung total bayar menu baru
-      // const total_bayar = newMenuUpdate.reduce((total, item) => {
-      //   return item.harga_total + total;
-      // }, 0);
-      // console.log('dataModal-----------', {
-      //   id_pesanan: params.id_pesanan,
-      //   ...menuUpdate,
-      // });
 
       const update = updateMenu({...menuUpdate, id_pesanan: params.id_pesanan});
 
       update
         .then((res) => {
-          console.log('------------------------', res);
           this.props.navigation.navigate('viewBasketPage', {
             id_pesanan: params.id_pesanan,
           });
@@ -220,7 +173,6 @@ class ListMenuPage extends Component {
       `${dataModal.get_menu.nama} ditambahkan !`,
       ToastAndroid.SHORT,
     );
-    // return true;
   };
 
   handleFilter = (id) => {
@@ -240,8 +192,6 @@ class ListMenuPage extends Component {
     this.handleSetButtonActive = e;
   };
   render() {
-    // console.log('props list menu', this.props);
-    // console.log('dataModalllllllllllllll', this.state.dataModal);
     const {Increase, Decrease, handleFilter, handleSetButtonActive} = this;
     const {navigation, route, GeneralReducer} = this.props;
     const {
@@ -266,7 +216,6 @@ class ListMenuPage extends Component {
           ShowProfile={false}
           ShowFilterBtn={true}
           ShowEditBtn={false}
-          // TextHeader="#N20202020"
           navigation={navigation}
           handleFilter={handleFilter}
           handleSetButtonActive={handleSetButtonActive}

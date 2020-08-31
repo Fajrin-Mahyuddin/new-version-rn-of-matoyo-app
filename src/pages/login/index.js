@@ -5,8 +5,6 @@ import {
   TextInput,
   StyleSheet,
   KeyboardAvoidingView,
-  SafeAreaView,
-  KeyboardAvoidingViewBase,
   Image,
   ScrollView,
   RefreshControl,
@@ -17,7 +15,6 @@ import default_logo from '../../images/current_logo_mini_login.png';
 import TextTitle from '../../components/body/TextTitle';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-
 import {connect} from 'react-redux';
 import {login_post} from '../../redux/login/LoginAction';
 import AsyncStorage from '@react-native-community/async-storage';

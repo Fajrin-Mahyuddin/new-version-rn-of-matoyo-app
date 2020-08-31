@@ -17,10 +17,8 @@ import {get_logout} from '../../redux/login/LoginAction';
 const ProfileDrawerContent = (props) => {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
-  // console.log(data);
   const isDrawerOpen = useIsDrawerOpen();
   const {GeneralReducer, LoginReducer} = data;
-  // console.log('isDrawerOpen', data);
   const logout = () => {
     isDrawerOpen && props.navigation.closeDrawer();
     dispatch(get_logout());
@@ -71,11 +69,6 @@ const ProfileDrawerContent = (props) => {
           )}
         />
       </DrawerContentScrollView>
-      {/* <DrawerItem
-        onPress={() => dispatch(get_reset())}
-        label={({size}) => <Text style={{fontSize: size}}>Reset</Text>}
-        icon={({color}) => <Icon name="trash-o" size={15} style={{color}} />}
-      /> */}
       <DrawerItem
         onPress={logout}
         label={({size}) => <Text style={{fontSize: size}}>Sign Out</Text>}

@@ -26,7 +26,6 @@ class Dashboard extends Component {
 
   render() {
     const {navigation} = this.props;
-    console.log('----------', this.props);
     return (
       <MainBackground source={backgroundImg} navigation={navigation}>
         <Header

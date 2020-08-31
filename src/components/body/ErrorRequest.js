@@ -8,12 +8,6 @@ import {getReset} from '../../redux/general/GeneralAction';
 const ErrorRequest = (props) => {
   const {msg} = useSelector(({GeneralReducer}) => GeneralReducer);
   const dispatch = useDispatch();
-  console.log('dari Error Request', props);
-  // let nameRoute = props.route.name;
-  // if (nameRoute === undefined) {
-  //   nameRoute = 'login';
-  // }
-
   return (
     <View style={styles.loadingStyle}>
       <Text style={{color: '#fff'}}>{props.lastRefresh}</Text>
