@@ -8,7 +8,7 @@ import Footers from '../../components/footers/Footer';
 import MainBackground from '../../components/body/MainBackground';
 import Content from '../../components/body/Content';
 import TextTitle from '../../components/body/TextTitle';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {getRequest} from '../../config/AxiosMethod';
 import {useIsFocused} from '@react-navigation/native';
 import {setLoading} from '../../redux/general/GeneralAction';
@@ -20,18 +20,19 @@ const HistoryPage = (props) => {
   moment.locale('id');
   const [dataLaporan, setDataLaporan] = useState(undefined);
   const dispatch = useDispatch();
+  const outlet = useSelector((state) => state.LoginReducer);
   const isFocus = useIsFocused();
 
   const getDaftarLaporan = () => {
     dispatch(setLoading(true));
-    getRequest(`daftar-laporan`)
+    getRequest(`daftar-laporan/${outlet.user.outlet.id_outlet}`)
       .then((res) => {
-        console.log('respon', res);
         setDataLaporan(res.data);
         dispatch(setLoading(false));
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.request);
+        console.log(err.response);
         dispatch(setLoading(false));
       });
   };

@@ -283,7 +283,6 @@ class ListMenuPage extends Component {
               }>
               <View style={styles.containerMenu}>
                 {/* Item menu */}
-
                 {filterDataMenu &&
                   filterDataMenu.map((list, i) => (
                     <TouchableOpacity
@@ -328,14 +327,10 @@ class ListMenuPage extends Component {
                         </View>
                         {list.get_stok.length ? (
                           !list.get_stok[0].sisa && (
-                            <View>
-                              <Text style={styles.itemIcon}>Kosong</Text>
-                            </View>
+                            <Text style={styles.itemIcon}>Kosong</Text>
                           )
                         ) : (
-                          <View>
-                            <Text style={styles.itemIcon}>Kosong</Text>
-                          </View>
+                          <Text style={styles.itemIcon}>Kosong</Text>
                         )}
                       </View>
                     </TouchableOpacity>
@@ -443,9 +438,9 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   itemIcon: {
-    alignSelf: 'center',
-    marginRight: 5,
-    bottom: '-85%',
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
     paddingHorizontal: 6,
     borderRadius: 4,
     color: '#fff',

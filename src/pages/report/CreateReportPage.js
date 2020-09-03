@@ -40,7 +40,7 @@ const CreateReportPage = (props) => {
         dispatch(setLoading(false));
       });
   };
-  console.log('state', state);
+
   return (
     <MainBackground source={second_bg}>
       <Header
