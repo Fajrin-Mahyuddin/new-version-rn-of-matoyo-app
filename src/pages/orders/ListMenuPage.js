@@ -203,7 +203,7 @@ class ListMenuPage extends Component {
       refresh,
       btnActive,
     } = this.state;
-
+    console.log('--------', filterDataMenu);
     return (
       <MainBackground source={second_bg} navigation={navigation} route={route}>
         <Header
@@ -288,7 +288,13 @@ class ListMenuPage extends Component {
                     <TouchableOpacity
                       key={i}
                       style={styles.itemMenu}
-                      disabled={!list.get_stok.length || !list.get_stok[0].sisa}
+                      disabled={
+                        !list.get_stok.length ||
+                        !list.get_stok[0].sisa ||
+                        Math.trunc(
+                          list.get_stok[0].sisa / list.jumlah_per_satuan,
+                        ) < 1
+                      }
                       onPress={() => this.handleAddModal(list)}>
                       <Image
                         style={styles.itemImg}
@@ -326,9 +332,9 @@ class ListMenuPage extends Component {
                           />
                         </View>
                         {list.get_stok.length ? (
-                          !list.get_stok[0].sisa && (
-                            <Text style={styles.itemIcon}>Kosong</Text>
-                          )
+                          Math.trunc(
+                            list.get_stok[0].sisa / list.jumlah_per_satuan,
+                          ) < 1 && <Text style={styles.itemIcon}>Kosong</Text>
                         ) : (
                           <Text style={styles.itemIcon}>Kosong</Text>
                         )}

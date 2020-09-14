@@ -57,7 +57,7 @@ const CreateReportPage = (props) => {
       <Content>
         <View style={styles.contentWrapper}>
           <TextTitle>
-            {state.error ? `${state.msg}` : 'Buat Laporan Hari Ini'}{' '}
+            {state.error ? `${state.msg}` : 'Buat Laporan Hari Ini'}
           </TextTitle>
           <KeyboardAvoidingView style={{marginTop: 10}}>
             <Text style={{marginBottom: 5}}>Total (Rp) - *hanya angka</Text>

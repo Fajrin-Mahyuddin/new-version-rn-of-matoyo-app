@@ -11,7 +11,7 @@ export const setError = (payload) => ({
   payload,
 });
 
-export const setLoading = (payload) => ({
+export const set_loading = (payload) => ({
   type: SET_LOADING,
   payload,
 });
@@ -36,6 +36,15 @@ export const set_error = (data) => {
     setTimeout(() => {
       dispatch(setError({msg: null, error: false}));
     }, 5000);
+  };
+};
+
+export const setLoading = (data) => {
+  return (dispatch) => {
+    dispatch(set_loading(data));
+    setTimeout(() => {
+      dispatch(set_loading(false));
+    }, 13000);
   };
 };
 

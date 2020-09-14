@@ -76,10 +76,19 @@ const HistoryPage = (props) => {
                         <Text style={styles.itemText}>{value}</Text>
                       )}
                     />
+                    <CurrencyFormat
+                      value={view.total_penjualan}
+                      displayType={'text'}
+                      thousandSeparator={true}
+                      prefix={'Rp.'}
+                      renderText={(value) => (
+                        <Text style={styles.itemText}>{` ( ${value} ) `}</Text>
+                      )}
+                    />
                   </View>
                   <View style={styles.itemGroup}>
                     <Text style={{...styles.itemText, color: '#C6C3BD'}}>
-                      {moment(view.created_at).format('dddd, L || HH:mm')}
+                      {moment(view.created_at).format('L')}
                     </Text>
                     <EvilIcons
                       style={styles.itemIcon}
